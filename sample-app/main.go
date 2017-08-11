@@ -43,7 +43,7 @@ type Instance struct {
 	Error      string
 }
 
-const version string = "1.5.0"
+const version string = "1.5.2"
 
 func main() {
 	showversion := flag.Bool("version", false, "display version")
