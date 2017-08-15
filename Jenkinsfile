@@ -15,7 +15,7 @@ node {
   sh("docker run ${imageNm} go test")
 
   stage 'Push image to registry'
-  sh("docker tag ${imageTag}")
+  sh("docker tag ${imageNm} ${imageTag}")
   sh("docker push ${imageTag}")
 
   stage "Deploy Application"
