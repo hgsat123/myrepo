@@ -1,19 +1,22 @@
 node {
-  def project = 'test'
+  def project = 'sys'
   def appName = 'gceme'
   def feSvcName = "${appName}-frontend"
-  def imageTag = "gcr.io/${project}/${appName}:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
+  def registry = "172.31.17.242:5000"
+  def imageNm = "${appName}:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
+  def imageTag = "$registry/${project}/${imageNm}"
 
   checkout scm
 
   stage 'Build image'
-  sh("docker build -t ${imageTag} .")
+  sh("docker build -t ${imageNm} .")
 
   stage 'Run Go tests'
-  sh("docker run ${imageTag} go test")
+  sh("docker run ${imageNm} go test")
 
   stage 'Push image to registry'
-  sh("gcloud docker -- push ${imageTag}")
+  sh("docker tag ${imageTag}")
+  sh("docker push ${imageTag}")
 
   stage "Deploy Application"
   switch (env.BRANCH_NAME) {
