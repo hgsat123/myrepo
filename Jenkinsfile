@@ -1,9 +1,5 @@
 node {
-<<<<<<< HEAD:Jenkinsfile
   def project = 'sys'
-=======
-  def project = 'github'
->>>>>>> c3b6f4bd03dcdcc6048cbebddfb369d0475a402f:sample-app/Jenkinsfile
   def appName = 'gceme'
   def feSvcName = "${appName}-frontend"
   def registry = "172.31.17.242:5000"
