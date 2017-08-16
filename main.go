@@ -43,7 +43,11 @@ type Instance struct {
 	Error      string
 }
 
+<<<<<<< HEAD:main.go
 const version string = "1.6.0"
+=======
+const version string = "1.5.2"
+>>>>>>> c3b6f4bd03dcdcc6048cbebddfb369d0475a402f:sample-app/main.go
 
 func main() {
 	showversion := flag.Bool("version", false, "display version")
